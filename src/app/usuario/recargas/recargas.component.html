@@ -1,0 +1,82 @@
+<app-header></app-header>
+
+<div class="container my-4">
+  <h1 class="text-center mb-4">Recargar dinero</h1>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <div class="card mx-3 my-5">
+          <form
+            class="mx-5 my-3"
+            [formGroup]="recargaForm"
+            (ngSubmit)="recargarSaldo()"
+          >
+          <!--número de tarjeta-->
+            <div class="form-group my-2">
+              <div class="row">
+                <div class="col-4 text-start">
+                  <label for="tarjeta_usuario">Número de tarjeta</label>
+                </div>
+                <div class="col-8 text-start">
+                  <label for="tarjeta_usuario">{{ numero_tarjeta }}</label>
+                </div>
+              </div>
+            </div>
+
+          <!--saldo actual -->
+            <div class="form-group my-2">
+              <div class="row">
+                <div class="col-4 text-start">
+                  <label for="tarjeta_usuario">Saldo actual</label>
+                </div>
+                <div class="col-8 text-start">
+                  <label for="tarjeta_usuario"
+                    >$ {{ saldo }}</label
+                  >
+                </div>
+              </div>
+            </div>
+
+          <!--valor a recargar-->
+            <div class="form-group my-2">
+              <div class="row">
+                <div class="col-4 text-start">
+                  <label for="monto">Valor a recargar</label>
+                </div>
+                <div class="col-8">
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="monto"
+                    placeholder="Valor de la recarga"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-4">
+              <div class="col-6 text-end">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="cancelarRecarga()"
+                >
+                  Cancelar
+                </button>
+              </div>
+              <div class="col-6 text-start">
+                <button
+                  type="submit"
+                  class="btn btn-warning"
+                  [disabled]="!recargaForm.valid"
+                >
+                  Recargar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
